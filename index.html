@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#3b82f6">
+<meta name="theme-color" content="#ff5c35">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>HIA Behaviour Tracker</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0c1018;--sf:#141824;--sf2:#1c2130;--bd:#282e40;--tx:#e0e4ef;--dim:#6a7294;--acc:#3b82f6;--acc2:#60a5fa;--grn:#2dd4a8;--yel:#f0b429;--red:#ef4444;--pur:#8b7cf6;--teal:#22c9b0;--wa:#25D366}
+:root{--bg:#0b0d12;--sf:#13161e;--sf2:#1b1f2a;--bd:#262c3a;--tx:#e2e5ee;--dim:#6e7590;--acc:#3b82f6;--acc2:#60a5fa;--grn:#2dd4a8;--yel:#f0b429;--red:#ef4444;--pur:#8b7cf6;--teal:#22c9b0;--wa:#25D366}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100dvh}
-.hdr{padding:14px;border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:50;background:rgba(12,16,24,.92);backdrop-filter:blur(10px)}
+.hdr{padding:14px;border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:50;background:rgba(11,13,18,.92);backdrop-filter:blur(10px)}
 .hdr-r{display:flex;align-items:center;gap:10px}
 .hdr-i{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex-shrink:0}
 .hdr h1{font-size:1rem;font-weight:800;letter-spacing:-.3px}
@@ -21,7 +21,7 @@ body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--
 .W{max-width:700px;margin:0 auto;padding:10px 10px 100px}
 .tabs{display:flex;gap:2px;margin-bottom:12px;background:var(--sf);border-radius:10px;padding:3px;border:1px solid var(--bd);overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.T{flex:0 0 auto;padding:7px 10px;border:none;background:0;color:var(--dim);font-size:.65rem;font-weight:600;border-radius:7px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.2s}
+.T{flex:0 0 auto;padding:7px 9px;border:none;background:0;color:var(--dim);font-size:.62rem;font-weight:600;border-radius:7px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.2s}
 .T.on{background:var(--acc);color:#fff;box-shadow:0 2px 8px rgba(59,130,246,.25)}
 .C{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:10px}
 .C h2{font-size:.86rem;font-weight:700;margin-bottom:10px}
@@ -29,22 +29,47 @@ body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--
 @media(max-width:400px){.R{grid-template-columns:1fr}}
 .L{font-size:.6rem;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
 select,input[type=date],input[type=time],input[type=text],textarea{width:100%;padding:8px 10px;background:var(--sf2);border:1px solid var(--bd);border-radius:8px;color:var(--tx);font-size:.84rem;font-family:inherit;outline:none;-webkit-appearance:none;appearance:none}
-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%236a7294'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;padding-right:24px}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%236e7590'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;padding-right:24px}
 select:focus,input:focus,textarea:focus{border-color:var(--acc);box-shadow:0 0 0 2px rgba(59,130,246,.1)}
 textarea{resize:vertical;min-height:40px}
-input[type=text]::placeholder{color:var(--dim);opacity:.7}
-.B{width:100%;padding:11px;border:none;border-radius:9px;color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;margin-top:5px;background:linear-gradient(135deg,var(--acc),#2563eb)}
+.B{width:100%;padding:11px;border:none;border-radius:9px;color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;margin-top:5px}
 .B:active{transform:scale(.98)}
+.Bo{background:linear-gradient(135deg,var(--acc),#2563eb)}
+.Bt{background:linear-gradient(135deg,var(--teal),#14a896)}
+.Bp{background:linear-gradient(135deg,var(--pur),#6944c6)}
 .Sb{padding:6px 10px;font-size:.68rem;font-weight:600;border:1px solid var(--bd);background:var(--sf2);color:var(--tx);border-radius:7px;cursor:pointer;font-family:inherit}
 .Sb.D{border-color:var(--red);color:var(--red)}
-/* Log entries */
+/* Chips for offences */
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.chip{padding:5px 10px;border-radius:7px;border:1px solid var(--bd);background:var(--sf2);color:var(--tx);font-size:.72rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;user-select:none}
+.chip.on{border-color:var(--acc);background:rgba(59,130,246,.12);color:var(--acc)}
+.chip.on-y{border-color:var(--yel);background:rgba(240,180,41,.12);color:var(--yel)}
+.chip.on-r{border-color:var(--red);background:rgba(239,68,68,.12);color:var(--red)}
+.cg-title{font-size:.6rem;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin:8px 0 4px}
+/* Toggle */
+.toggle{display:flex;gap:2px;background:var(--sf2);border-radius:8px;padding:2px;margin-bottom:10px;border:1px solid var(--bd)}
+.toggle button{flex:1;padding:7px;border:none;background:0;color:var(--dim);font-size:.72rem;font-weight:600;border-radius:6px;cursor:pointer;font-family:inherit;transition:.2s}
+.toggle button.on{background:var(--acc);color:#fff}
+/* Attendance */
+.AG{display:flex;flex-direction:column;gap:4px;margin:8px 0}
+.AR{display:flex;align-items:center;padding:6px 10px;background:var(--sf2);border:1px solid var(--bd);border-radius:8px;transition:.15s}
+.AR.ia{border-color:var(--red);background:rgba(239,68,68,.04)}
+.AR.il{border-color:var(--yel);background:rgba(240,180,41,.04)}
+.AR .n{width:18px;font-size:.64rem;color:var(--dim);font-weight:600;flex-shrink:0}
+.AR .nm{flex:1;font-weight:600;font-size:.8rem}
+.ab{padding:3px 8px;border-radius:5px;border:1px solid var(--bd);background:0;color:var(--dim);font-size:.64rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.12s}
+.ab.sp{background:rgba(45,212,168,.12);color:var(--grn);border-color:var(--grn)}
+.ab.sa{background:rgba(239,68,68,.12);color:var(--red);border-color:var(--red)}
+.ab.sl{background:rgba(240,180,41,.12);color:var(--yel);border-color:var(--yel)}
+.AS{display:flex;gap:10px;padding:8px 10px;background:var(--sf2);border-radius:8px;font-size:.8rem;font-weight:600;flex-wrap:wrap;margin:8px 0}
+/* Log */
 .LE{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:11px 12px;margin-bottom:7px;position:relative;animation:si .25s}
 @keyframes si{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
 .LE .x{position:absolute;top:7px;right:7px;border:none;background:0;color:var(--dim);cursor:pointer;font-size:.78rem;padding:3px}
 .LE .tp{display:flex;justify-content:space-between;align-items:flex-start;padding-right:20px;margin-bottom:2px}
 .LE .sn{font-weight:700;font-size:.85rem}
-.LE .cl{font-size:.6rem;font-weight:600;padding:1px 5px;border-radius:4px;background:rgba(59,130,246,.1);color:var(--acc2)}
-.bg{display:inline-block;padding:1px 7px;border-radius:4px;font-size:.68rem;font-weight:600}
+.LE .cl{font-size:.6rem;font-weight:600;padding:1px 5px;border-radius:4px;background:rgba(139,124,246,.1);color:var(--pur)}
+.bg{display:inline-block;padding:1px 7px;border-radius:4px;font-size:.68rem;font-weight:600;margin:2px 2px 0 0}
 .sv-low{background:rgba(45,212,168,.1);color:var(--grn)}
 .sv-medium{background:rgba(240,180,41,.1);color:var(--yel)}
 .sv-high{background:rgba(239,68,68,.1);color:var(--red)}
@@ -54,8 +79,7 @@ input[type=text]::placeholder{color:var(--dim);opacity:.7}
 .lh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px}
 .lh h2{font-size:.88rem;font-weight:700}
 .lc{display:flex;gap:4px;flex-wrap:wrap}
-.fs{padding:5px 20px 5px 7px;font-size:.68rem;background:var(--sf2);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-family:inherit;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%236a7294'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
-.alert-bar{padding:8px 12px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;font-size:.76rem;font-weight:600;color:var(--red);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.fs{padding:5px 20px 5px 7px;font-size:.68rem;background:var(--sf2);border:1px solid var(--bd);border-radius:6px;color:var(--tx);font-family:inherit;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%236e7590'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
 /* Stats */
 .SG{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
 .SC{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:12px 4px;text-align:center}
@@ -69,35 +93,25 @@ input[type=text]::placeholder{color:var(--dim);opacity:.7}
 .LR .rk.tp{background:rgba(59,130,246,.12);color:var(--acc)}
 .LR .ln{flex:1;font-weight:600;font-size:.8rem}
 .LR .lv{font-weight:700;font-size:.8rem;min-width:20px;text-align:right}
-.OB{display:flex;align-items:center;padding:7px 12px;border-bottom:1px solid var(--bd);gap:8px}
-.OB:last-child{border-bottom:none}
-.OB .ol{font-size:.74rem;font-weight:600;min-width:70px}
-.OB .ow{flex:1;height:4px;background:var(--sf2);border-radius:2px;overflow:hidden}
-.OB .ob{height:100%;background:var(--acc);border-radius:2px}
-.OB .oc{font-weight:700;font-size:.74rem;color:var(--acc);min-width:18px;text-align:right}
 /* Share */
 .shb{padding:12px;border-radius:9px;border:1px solid var(--bd);background:var(--sf2);color:var(--tx);font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;width:100%}
 .shb:active{transform:scale(.97)}
 .shb.wa{border-color:var(--wa);background:rgba(37,211,102,.06);color:var(--wa)}
 .shg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
-.toast{position:fixed;bottom:14px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--grn);color:#0c1018;padding:9px 18px;border-radius:9px;font-weight:600;font-size:.82rem;z-index:1000;opacity:0;transition:.3s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;font-family:inherit}
+/* Student management */
+.stu-item{display:flex;align-items:center;padding:6px 10px;background:var(--sf2);border:1px solid var(--bd);border-radius:8px;margin-bottom:4px}
+.stu-item .nm{flex:1;font-weight:600;font-size:.82rem}
+.stu-item .del{border:none;background:0;color:var(--dim);cursor:pointer;font-size:.8rem;padding:2px 6px}
+.stu-item .del:hover{color:var(--red)}
+/* Alert */
+.alert{padding:8px 12px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;font-size:.76rem;font-weight:600;color:var(--red);margin-bottom:8px}
+/* Toast */
+.toast{position:fixed;bottom:14px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--grn);color:#0b0d12;padding:9px 18px;border-radius:9px;font-weight:600;font-size:.82rem;z-index:1000;opacity:0;transition:.3s cubic-bezier(.22,1,.36,1);pointer-events:none;white-space:nowrap;font-family:inherit}
 .toast.on{transform:translateX(-50%) translateY(0);opacity:1}
 .P{display:none}.P.on{display:block}
+/* Print */
 .PR{display:none}
-@media print{
-body{background:#fff!important;color:#111!important}
-.hdr,.tabs,.W>.P,.toast{display:none!important}
-.PR{display:block!important;padding:16px;font-family:'Outfit',system-ui,sans-serif;font-size:11px}
-.PR h1{font-size:16px;margin-bottom:2px;font-weight:800}
-.PR h3{font-size:11px;color:#555;margin-bottom:10px;font-weight:500}
-.PR h2{font-size:13px;margin:12px 0 5px;border-bottom:2px solid #222;padding-bottom:2px;font-weight:700}
-.PR table{width:100%;border-collapse:collapse;font-size:10px;margin-bottom:8px}
-.PR th,.PR td{border:1px solid #bbb;padding:3px 6px;text-align:left}
-.PR th{background:#eee;font-weight:700}
-.PR .pr-red{color:#b00;font-weight:700}
-.PR .pr-yel{color:#a80;font-weight:700}
-.PR .pr-ft{margin-top:16px;font-size:9px;color:#888;border-top:1px solid #ccc;padding-top:4px}
-}
+@media print{body{background:#fff!important;color:#111!important}.hdr,.tabs,.W>.P,.toast{display:none!important}.PR{display:block!important;padding:16px;font-family:'Outfit',system-ui,sans-serif;font-size:11px}.PR h1{font-size:16px;margin-bottom:2px;font-weight:800}.PR h3{font-size:11px;color:#555;margin-bottom:10px}.PR h2{font-size:13px;margin:12px 0 5px;border-bottom:2px solid #222;padding-bottom:2px}.PR table{width:100%;border-collapse:collapse;font-size:10px;margin-bottom:8px}.PR th,.PR td{border:1px solid #bbb;padding:3px 6px;text-align:left}.PR th{background:#eee;font-weight:700}.PR .pr-red{color:#b00;font-weight:700}.PR .pr-ft{margin-top:16px;font-size:9px;color:#888;border-top:1px solid #ccc;padding-top:4px}}
 </style>
 </head>
 <body>
@@ -105,7 +119,10 @@ body{background:#fff!important;color:#111!important}
 <div class="W">
 <div class="tabs" id="tabBar"></div>
 <div id="p-record" class="P on"></div>
+<div id="p-attend" class="P"></div>
 <div id="p-log" class="P"></div>
+<div id="p-attlog" class="P"></div>
+<div id="p-students" class="P"></div>
 <div id="p-stats" class="P"></div>
 <div id="p-share" class="P"></div>
 </div>
@@ -113,35 +130,51 @@ body{background:#fff!important;color:#111!important}
 <div class="toast" id="toast"></div>
 
 <script>
+// === CLASSES ===
 const CLASSES=[
-  {id:"kg1",name:"KG 1",prog:"PYP"},{id:"kg2",name:"KG 2",prog:"PYP"},
-  {id:"y1a",name:"Year 1A",prog:"PYP"},{id:"y1b",name:"Year 1B",prog:"PYP"},
-  {id:"y2",name:"Year 2",prog:"PYP"},
-  {id:"y3a",name:"Year 3A",prog:"PYP"},{id:"y3b",name:"Year 3B",prog:"PYP"},
-  {id:"y4",name:"Year 4",prog:"PYP"},
-  {id:"y5a",name:"Year 5A",prog:"PYP"},{id:"y5b",name:"Year 5B",prog:"PYP"},
-  {id:"y6",name:"Year 6",prog:"MYP"},{id:"y7",name:"Year 7",prog:"MYP"},
-  {id:"y8",name:"Year 8",prog:"MYP"},{id:"y9",name:"Year 9",prog:"MYP"},
-  {id:"y10",name:"Year 10",prog:"MYP"}
+  {id:"kg1",name:"KG 1",sec:"PYP"},{id:"kg2",name:"KG 2",sec:"PYP"},
+  {id:"y1a",name:"Year 1A",sec:"PYP"},{id:"y1b",name:"Year 1B",sec:"PYP"},
+  {id:"y2",name:"Year 2",sec:"PYP"},
+  {id:"y3a",name:"Year 3A",sec:"PYP"},{id:"y3b",name:"Year 3B",sec:"PYP"},
+  {id:"y4",name:"Year 4",sec:"PYP"},
+  {id:"y5a",name:"Year 5A",sec:"PYP"},{id:"y5b",name:"Year 5B",sec:"PYP"},
+  {id:"y6",name:"Year 6",sec:"MYP"},{id:"y7",name:"Year 7",sec:"MYP"},
+  {id:"y8",name:"Year 8",sec:"MYP"},{id:"y9",name:"Year 9",sec:"MYP"},
+  {id:"y10",name:"Year 10",sec:"MYP"}
 ];
 const CL={};CLASSES.forEach(c=>{CL[c.id]=c.name;});
 
+// === DEFAULT STUDENTS (seeded once) ===
+const DEFAULTS={};
+
+// === OFFENCES (3 categories) ===
+const OFF_OWN=["Not writing","No homework","No materials","Sleeping","Head on desk","Daydreaming","Gave up","Refused to work","Rushed work","Copying","Doodling","Late","Messy book","Packing up early"];
+const OFF_OTHERS=["Talking","Whispering","Laughing","Calling out","Making noises","Turning around","Passing things","Standing up","Walking around","Throwing things","Arguing with teacher","Arguing with student","Shouting","Name-calling","Teasing","Making others laugh","Disrupting class","Distracting others","Fighting","Hitting","Bullying","Threatening","Swearing","Breaking things","Left class","Stealing"];
+const OFF_BOTH=["Talking","Turning around","Arguing with teacher","Arguing with student","Copying","Late","Not writing","Calling out","Disrupting class"];
+const NEEDS_INVOLVED=["Fighting","Hitting","Bullying","Threatening","Arguing with student","Name-calling","Teasing","Stealing","Throwing things"];
+const HIGH=["Fighting","Hitting","Bullying","Threatening","Stealing","Breaking things","Swearing"];
+const MED=["Arguing with teacher","Arguing with student","Shouting","Throwing things","Name-calling","Standing up","Walking around","Left class","Teasing","Distracting others"];
+
+function sev(o){if(HIGH.includes(o))return"high";if(MED.includes(o))return"medium";return"low";}
+
+// Monitor can only see these
+const MONITOR_OWN=["Not writing","Sleeping","Head on desk","Doodling","Packing up early"];
+const MONITOR_OTHERS=["Talking","Whispering","Laughing","Calling out","Making noises","Turning around","Passing things","Standing up","Walking around","Throwing things","Arguing with student","Shouting","Name-calling","Teasing","Making others laugh","Fighting","Hitting","Swearing","Breaking things","Left class"];
+
 const LOCATIONS=[
-  {group:"In Class",items:["English","Maths","Science","Arabic","Quran","Social Studies","Art","ICT","Other Subject"]},
-  {group:"PE / Outside",items:["PE Lesson","Playground","Assembly"]}
+  {g:"In Class",items:["English","Maths","Science","Arabic","Quran","Social Studies","Art","ICT","Other"]},
+  {g:"PE / Outside",items:["PE Lesson","Playground","Assembly"]}
 ];
 
-const OFFENCES=[
-  {g:"Minor",items:["Talking","Laughing in class","Turning around","Not writing","Homework not done","Playing with objects","Sleeping / Head down","Eating in class","Late to class","Out of uniform","Littering","Not bringing materials"]},
-  {g:"Moderate",items:["Standing without permission","Arguing with teacher","Arguing with student","Shouting","Throwing objects","Leaving seat repeatedly","Disrespectful language","Refusing to work","Copying / Cheating","Using phone","Running in corridor","Name-calling","Disrupting lesson"]},
-  {g:"Serious",items:["Fighting","Hitting another student","Bullying","Destroying property","Leaving class without permission","Threatening behaviour","Stealing"]}
+const TABS=[
+  {id:"record",icon:"✏️",label:"Record"},
+  {id:"attend",icon:"📋",label:"Attend."},
+  {id:"log",icon:"📄",label:"Log"},
+  {id:"attlog",icon:"📅",label:"Att.Log"},
+  {id:"students",icon:"👥",label:"Students"},
+  {id:"stats",icon:"📊",label:"Stats"},
+  {id:"share",icon:"📤",label:"Share"}
 ];
-const SEV={};
-OFFENCES[0].items.forEach(o=>SEV[o]="low");
-OFFENCES[1].items.forEach(o=>SEV[o]="medium");
-OFFENCES[2].items.forEach(o=>SEV[o]="high");
-
-const TABS=[{id:"record",icon:"✏️",label:"Record"},{id:"log",icon:"📄",label:"Log"},{id:"stats",icon:"📊",label:"Stats"},{id:"share",icon:"📤",label:"Share"}];
 
 const td=()=>new Date().toISOString().split("T")[0];
 const nt=()=>new Date().toTimeString().slice(0,5);
@@ -149,11 +182,41 @@ const fD=d=>{if(!d)return"";const p=d.split("-");return p[2]+"/"+p[1]+"/"+p[0];}
 const fDL=d=>{try{return new Date(d+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});}catch{return fD(d);}};
 const esc=s=>{const d=document.createElement("div");d.textContent=s||"";return d.innerHTML;};
 
+// === STATE ===
 let inc=JSON.parse(localStorage.getItem("hia_inc")||"[]");
+let att=JSON.parse(localStorage.getItem("hia_att")||"[]");
 let curTab="record";
+let mode="monitor"; // monitor or teacher
+let selOffences=[];
+let aState={};
 
-function sv(){localStorage.setItem("hia_inc",JSON.stringify(inc));}
+// Seed default students
+(function seedStudents(){
+  for(const[cls,names]of Object.entries(DEFAULTS)){
+    const key="hia_stu_"+cls;
+    if(!localStorage.getItem(key)){
+      localStorage.setItem(key,JSON.stringify(names));
+    }
+  }
+})();
 
+// Migrate old data
+(function(){
+  if(!inc.length){try{const o=localStorage.getItem("behaviourIncidents")||localStorage.getItem("bt_inc");if(o){const p=JSON.parse(o);if(p&&p.length){inc=p.map(x=>({...x,sev:x.sev||x.severity||sev(x.offence),location:x.subject||x.location||"Other"}));localStorage.setItem("hia_inc",JSON.stringify(inc));}}}catch{}}
+  if(!att.length){try{const o=localStorage.getItem("behaviourAttendance")||localStorage.getItem("bt_att");if(o){const p=JSON.parse(o);if(p&&p.length){att=p;localStorage.setItem("hia_att",JSON.stringify(att));}}}catch{}}
+})();
+
+function svI(){localStorage.setItem("hia_inc",JSON.stringify(inc));}
+function svA(){localStorage.setItem("hia_att",JSON.stringify(att));}
+
+function getStu(cls){
+  const key="hia_stu_"+cls;
+  try{return JSON.parse(localStorage.getItem(key)||"[]");}catch{return[];}
+}
+
+function setStu(cls,names){localStorage.setItem("hia_stu_"+cls,JSON.stringify(names));}
+
+// === TABS ===
 function renderTabs(){
   document.getElementById("tabBar").innerHTML=TABS.map(t=>`<button class="T${curTab===t.id?" on":""}" onclick="go('${t.id}')">${t.icon} ${t.label}</button>`).join("");
 }
@@ -163,147 +226,269 @@ function go(tab){
   document.querySelectorAll(".P").forEach(p=>p.classList.remove("on"));
   document.getElementById("p-"+tab).classList.add("on");
   renderTabs();
+  if(tab==="record") renderRecord();
+  if(tab==="attend") renderAttend();
   if(tab==="log") rLog();
+  if(tab==="attlog") rAL();
+  if(tab==="students") renderStudents();
   if(tab==="stats") rStats();
   if(tab==="share") rShare();
 }
 
 // === RECORD ===
 function renderRecord(){
+  selOffences=[];
   const el=document.getElementById("p-record");
-  // Repeat alerts
+  // Alerts
   const today=td();const tI=inc.filter(i=>i.date===today);
   const cm={};tI.forEach(i=>{cm[i.student]=(cm[i.student]||0)+1;});
   const reps=Object.entries(cm).filter(([_,c])=>c>=3);
-  let alert=reps.map(([n,c])=>`<div class="alert-bar">⚠️ <b>${esc(n)}</b> — ${c} incidents today</div>`).join("");
+  let alertH=reps.map(([n,c])=>`<div class="alert">⚠️ <b>${esc(n)}</b> — ${c} incidents today. Consider contacting parent.</div>`).join("");
 
-  el.innerHTML=`${alert}<div class="C"><h2>🚨 Record an Incident</h2>
-    <div class="R"><div><div class="L">Programme</div><select id="rProg" onchange="updCls()"><option value="PYP">PYP (Primary)</option><option value="MYP">MYP (Middle)</option></select></div><div><div class="L">Class</div><select id="rCls"></select></div></div>
-    <div class="R"><div><div class="L">Student Name</div><input type="text" id="rStu" placeholder="Type student name" autocomplete="off"></div><div><div class="L">Location</div><select id="rLoc">${LOCATIONS.map(g=>`<optgroup label="${g.group}">${g.items.map(i=>`<option>${i}</option>`).join("")}</optgroup>`).join("")}</select></div></div>
-    <div style="margin-bottom:7px"><div class="L">Offence</div><select id="rOff">${OFFENCES.map(g=>`<optgroup label="${g.g}">${g.items.map(i=>`<option>${i}</option>`).join("")}</optgroup>`).join("")}</select></div>
-    <div class="R"><div><div class="L">Date</div><input type="date" id="rD" value="${td()}"></div><div><div class="L">Time</div><input type="time" id="rT" value="${nt()}"></div></div>
-    <div style="margin-bottom:6px"><div class="L">Note (optional)</div><textarea id="rN" placeholder="Details..."></textarea></div>
-    <button class="B" onclick="addInc()">Record Incident</button></div>`;
-  updCls();
+  const ownList=mode==="monitor"?MONITOR_OWN:OFF_OWN;
+  const othList=mode==="monitor"?MONITOR_OTHERS:OFF_OTHERS;
+  const teacherOnly=mode==="teacher"?["No homework","No materials","Gave up","Refused to work","Rushed work","Copying","Late","Messy book","Daydreaming","Bullying","Threatening","Stealing","Disrupting class","Distracting others","Arguing with teacher"]:[];
+
+  el.innerHTML=`${alertH}
+    <div class="C">
+      <h2>🚨 Record Incident</h2>
+      <div class="toggle"><button class="${mode==="monitor"?"on":""}" onclick="mode='monitor';renderRecord()">📝 Monitor</button><button class="${mode==="teacher"?"on":""}" onclick="mode='teacher';renderRecord()">👨‍🏫 Teacher</button></div>
+      <div class="R">
+        <div><div class="L">Section</div><select id="rSec" onchange="updRC()"><option value="PYP">PYP (Primary)</option><option value="MYP">MYP (Middle)</option></select></div>
+        <div><div class="L">Class</div><select id="rCls" onchange="updRS()"></select></div>
+      </div>
+      <div class="R">
+        <div id="stuW"><div class="L">Student</div><select id="rStu"></select></div>
+        ${mode==="teacher"?`<div><div class="L">Location</div><select id="rLoc">${LOCATIONS.map(g=>`<optgroup label="${g.g}">${g.items.map(i=>`<option>${i}</option>`).join("")}</optgroup>`).join("")}</select></div>`:""}
+      </div>
+      <div class="L" style="margin-top:4px">What happened (tap all that apply)</div>
+      <div class="cg-title">Affects Own Learning</div>
+      <div class="chips">${ownList.map(o=>`<span class="chip" onclick="togOff(this,'${o}')">${o}</span>`).join("")}</div>
+      <div class="cg-title">Affects Others' Learning</div>
+      <div class="chips">${othList.map(o=>`<span class="chip" onclick="togOff(this,'${o}')">${o}</span>`).join("")}</div>
+      <div id="involvedW" style="display:none"><div class="L" style="margin-top:6px">Student involved</div><select id="rInv"><option value="">— optional —</option></select></div>
+      ${mode==="teacher"?`<div style="margin-top:6px"><div class="L">Note (optional)</div><textarea id="rN" placeholder="Details..."></textarea></div>`:""}
+      <button class="B Bo" onclick="addInc()">Record</button>
+    </div>`;
+  updRC();
 }
 
-function updCls(){
-  const prog=document.getElementById("rProg").value;
-  document.getElementById("rCls").innerHTML=CLASSES.filter(c=>c.prog===prog).map(c=>`<option value="${c.id}">${c.name}</option>`).join("");
+function updRC(){
+  const sec=document.getElementById("rSec").value;
+  document.getElementById("rCls").innerHTML=CLASSES.filter(c=>c.sec===sec).map(c=>`<option value="${c.id}">${c.name}</option>`).join("");
+  updRS();
+}
+
+function updRS(){
+  const cls=document.getElementById("rCls").value;
+  const names=getStu(cls);
+  const stuW=document.getElementById("stuW");
+  if(names.length){
+    stuW.innerHTML=`<div class="L">Student</div><select id="rStu">${names.map(s=>`<option>${s}</option>`).join("")}</select>`;
+  } else {
+    stuW.innerHTML=`<div class="L">Student</div><div style="font-size:.74rem;color:var(--yel);padding:8px 0">No students for this class. <span style="text-decoration:underline;cursor:pointer" onclick="go('students')">Add them in Students tab</span></div>`;
+  }
+  updInvolved();
+}
+
+function togOff(el,off){
+  const i=selOffences.indexOf(off);
+  if(i>-1){selOffences.splice(i,1);el.className="chip";}
+  else{selOffences.push(off);const s=sev(off);el.className="chip "+(s==="high"?"on-r":s==="medium"?"on-y":"on");}
+  // Show/hide involved
+  const needsInv=selOffences.some(o=>NEEDS_INVOLVED.includes(o));
+  document.getElementById("involvedW").style.display=needsInv?"block":"none";
+  if(needsInv) updInvolved();
+}
+
+function updInvolved(){
+  const inv=document.getElementById("rInv");
+  if(!inv)return;
+  const cls=document.getElementById("rCls")?.value;
+  const stu=document.getElementById("rStu")?.value||"";
+  const names=getStu(cls||"").filter(n=>n!==stu);
+  inv.innerHTML=`<option value="">— optional —</option>`+names.map(s=>`<option>${s}</option>`).join("");
 }
 
 function addInc(){
-  const name=document.getElementById("rStu").value.trim();
-  if(!name){flash("Enter student name");return;}
-  const off=document.getElementById("rOff").value;
-  const item={id:Date.now(),class:document.getElementById("rCls").value,student:name,offence:off,sev:SEV[off]||"medium",location:document.getElementById("rLoc").value,date:document.getElementById("rD").value,time:document.getElementById("rT").value,note:document.getElementById("rN").value.trim()};
-  inc.unshift(item);sv();
-  document.getElementById("rN").value="";document.getElementById("rStu").value="";
-  const tc=inc.filter(i=>i.date===item.date&&i.student===item.student).length;
-  if(tc===3) flash("⚠️ "+name+" — 3rd incident!");
-  else flash("✓ "+name+" — "+off);
+  const stuEl=document.getElementById("rStu");
+  if(!stuEl||!stuEl.value){flash("Select a student");return;}
+  if(!selOffences.length){flash("Select at least one offence");return;}
+  const cls=document.getElementById("rCls").value;
+  const stu=stuEl.value;
+  const inv=document.getElementById("rInv")?.value||"";
+  const loc=document.getElementById("rLoc")?.value||"In class";
+  const note=document.getElementById("rN")?.value?.trim()||"";
+  const highest=selOffences.reduce((h,o)=>{const s=sev(o);return s==="high"?"high":s==="medium"&&h!=="high"?"medium":h;},"low");
+
+  const item={id:Date.now(),class:cls,student:stu,offences:selOffences.slice(),offence:selOffences.join(", "),sev:highest,involved:inv,location:loc,note:note,date:td(),time:nt(),mode:mode};
+  inc.unshift(item);svI();
+
+  const cnt=inc.filter(i=>i.date===item.date&&i.student===stu).length;
+  if(cnt===3)flash("⚠️ "+stu+" — 3rd incident today!");
+  else flash("✓ "+stu+" — "+selOffences.join(", "));
   renderRecord();
+}
+
+// === ATTENDANCE ===
+function renderAttend(){
+  const el=document.getElementById("p-attend");
+  const classesWithStudents=CLASSES.filter(c=>getStu(c.id).length>0);
+  if(!classesWithStudents.length){
+    el.innerHTML=`<div class="C"><h2>📋 Attendance</h2><div class="em">No classes have students yet. <span style="text-decoration:underline;cursor:pointer;color:var(--acc)" onclick="go('students')">Add students first</span></div></div>`;
+    return;
+  }
+  el.innerHTML=`<div class="C"><h2>📋 Take Attendance</h2>
+    <div class="R"><div><div class="L">Class</div><select id="aCls" onchange="buildAG()">${classesWithStudents.map(c=>`<option value="${c.id}">${c.name} (${getStu(c.id).length})</option>`).join("")}</select></div><div><div class="L">Date</div><input type="date" id="aD" value="${td()}"></div></div>
+    <div id="aGrid"></div><div class="AS" id="aSum"></div>
+    <button class="B Bt" onclick="saveAtt()">Save Attendance</button></div>`;
+  buildAG();
+}
+
+function buildAG(){
+  const cls=document.getElementById("aCls").value;
+  const list=getStu(cls);
+  if(!list.length){document.getElementById("aGrid").innerHTML='<div class="em">No students</div>';return;}
+  aState={};list.forEach(s=>{aState[s]="P";});
+  document.getElementById("aGrid").innerHTML='<div class="AG">'+list.map((s,i)=>`<div class="AR" id="ar${i}"><span class="n">${i+1}</span><span class="nm">${s}</span><div style="display:flex;gap:2px"><button class="ab sp" onclick="sA('${s.replace(/'/g,"\\'")}',${i},'P')">✓</button><button class="ab" onclick="sA('${s.replace(/'/g,"\\'")}',${i},'A')">✗</button><button class="ab" onclick="sA('${s.replace(/'/g,"\\'")}',${i},'L')">Late</button></div></div>`).join("")+"</div>";
+  updAS();
+}
+
+function sA(name,i,v){aState[name]=v;const row=document.getElementById("ar"+i);row.className="AR"+(v==="A"?" ia":"")+(v==="L"?" il":"");row.querySelectorAll(".ab").forEach(b=>{const bv=b.textContent==="✓"?"P":b.textContent==="✗"?"A":"L";b.className="ab"+(bv===v?(v==="P"?" sp":v==="A"?" sa":" sl"):"");});updAS();}
+function updAS(){const v=Object.values(aState);document.getElementById("aSum").innerHTML=`<span>🟢 ${v.filter(x=>x==="P").length}</span><span>🔴 ${v.filter(x=>x==="A").length}</span><span>🟡 ${v.filter(x=>x==="L").length}</span><span style="color:var(--dim)">Total: ${v.length}</span>`;}
+
+function saveAtt(){
+  const cls=document.getElementById("aCls").value,d=document.getElementById("aD").value;
+  const absent=Object.entries(aState).filter(([_,v])=>v==="A").map(([k])=>k);
+  const late=Object.entries(aState).filter(([_,v])=>v==="L").map(([k])=>k);
+  const present=Object.values(aState).filter(v=>v==="P").length;
+  att.unshift({id:Date.now(),class:cls,date:d,total:Object.keys(aState).length,present,absent,late});
+  svA();flash("✓ "+CL[cls]+": "+absent.length+" absent, "+late.length+" late");
+}
+
+// === STUDENT MANAGEMENT ===
+function renderStudents(){
+  const el=document.getElementById("p-students");
+  el.innerHTML=`<div class="C"><h2>👥 Manage Students</h2>
+    <div class="L">Class</div><select id="sCls" onchange="showStuList()" style="margin-bottom:10px">${CLASSES.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")}</select>
+    <div id="stuList"></div>
+    <div style="margin-top:10px"><div class="L">Add students (one name per line)</div><textarea id="sNames" placeholder="Ahmed Mohamed\nFatima Ali\nYusuf Hassan" style="min-height:80px"></textarea></div>
+    <button class="B Bp" onclick="addStudents()" style="margin-top:6px">Add Students</button>
+  </div>`;
+  showStuList();
+}
+
+function showStuList(){
+  const cls=document.getElementById("sCls").value;
+  const names=getStu(cls);
+  const el=document.getElementById("stuList");
+  if(!names.length){el.innerHTML=`<div style="font-size:.78rem;color:var(--dim);padding:10px 0">No students in ${CL[cls]} yet. Add them below.</div>`;return;}
+  el.innerHTML=`<div style="font-size:.72rem;color:var(--dim);margin-bottom:6px">${names.length} students</div>`+names.map((s,i)=>`<div class="stu-item"><span class="nm">${esc(s)}</span><button class="del" onclick="delStu('${cls}',${i})">✕</button></div>`).join("");
+}
+
+function addStudents(){
+  const cls=document.getElementById("sCls").value;
+  const raw=document.getElementById("sNames").value;
+  const newNames=raw.split("\n").map(n=>n.trim()).filter(n=>n.length>0);
+  if(!newNames.length){flash("Enter at least one name");return;}
+  const current=getStu(cls);
+  const added=newNames.filter(n=>!current.includes(n));
+  setStu(cls,[...current,...added]);
+  document.getElementById("sNames").value="";
+  flash("✓ Added "+added.length+" students to "+CL[cls]);
+  showStuList();
+}
+
+function delStu(cls,idx){
+  const names=getStu(cls);
+  names.splice(idx,1);
+  setStu(cls,names);
+  showStuList();
 }
 
 // === LOG ===
 function rLog(){
   const el=document.getElementById("p-log");
   const allStu=[...new Set(inc.map(i=>i.student))].sort();
-  el.innerHTML=`<div class="lh"><h2>📄 Incidents (${inc.length})</h2><div class="lc"><select class="fs" id="fCls" onchange="rLog()"><option value="all">All Classes</option>${CLASSES.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")}</select><select class="fs" id="fStu" onchange="rLog()"><option value="all">All</option>${allStu.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join("")}</select><button class="Sb D" onclick="if(confirm('Delete ALL?')){inc=[];sv();rLog();flash('Cleared');}">🗑</button></div></div><div id="logL"></div>`;
-  const fc=document.getElementById("fCls").value,fs=document.getElementById("fStu").value;
-  let f=inc;if(fc!=="all")f=f.filter(i=>i.class===fc);if(fs!=="all")f=f.filter(i=>i.student===fs);
+  el.innerHTML=`<div class="lh"><h2>📄 Incidents (${inc.length})</h2><div class="lc"><select class="fs" id="fCls" onchange="rLog()"><option value="all">All</option>${CLASSES.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")}</select><button class="Sb" onclick="expCSV()">⬇CSV</button><button class="Sb D" onclick="if(confirm('Delete ALL?')){inc=[];svI();rLog();flash('Cleared');}">🗑</button></div></div><div id="logL"></div>`;
+  const fc=document.getElementById("fCls").value;
+  let f=inc;if(fc!=="all")f=f.filter(i=>i.class===fc);
   const c=document.getElementById("logL");
   if(!f.length){c.innerHTML='<div class="em">📭 No incidents</div>';return;}
-  c.innerHTML=f.map(i=>`<div class="LE"><button class="x" onclick="inc=inc.filter(x=>x.id!==${i.id});sv();rLog();">✕</button><div class="tp"><span class="sn">${esc(i.student)}</span><span class="cl">${CL[i.class]||i.class}</span></div><span class="bg sv-${i.sev}">${esc(i.offence)}</span><div class="mt"><span>📅 ${fD(i.date)}</span><span>🕐 ${i.time}</span><span>📍 ${esc(i.location||"")}</span></div>${i.note?`<div class="nt">"${esc(i.note)}"</div>`:""}</div>`).join("");
+  c.innerHTML=f.map(i=>`<div class="LE"><button class="x" onclick="inc=inc.filter(x=>x.id!==${i.id});svI();rLog();">✕</button><div class="tp"><span class="sn">${esc(i.student)}</span><span class="cl">${CL[i.class]||i.class}</span></div><div>${(i.offences||[i.offence]).map(o=>`<span class="bg sv-${sev(o)}">${esc(o)}</span>`).join("")}</div>${i.involved?`<div style="font-size:.72rem;color:var(--pur);margin-top:3px">↔ ${esc(i.involved)}</div>`:""}<div class="mt"><span>📅 ${fD(i.date)}</span><span>🕐 ${i.time||""}</span><span>📍 ${esc(i.location||"")}</span>${i.mode?`<span>${i.mode==="monitor"?"📝":"👨‍🏫"}</span>`:""}</div>${i.note?`<div class="nt">"${esc(i.note)}"</div>`:""}</div>`).join("");
+}
+
+// === ATT LOG ===
+function rAL(){
+  const el=document.getElementById("p-attlog");
+  el.innerHTML=`<div class="lh"><h2>📅 Attendance (${att.length})</h2><div class="lc"><select class="fs" id="aLC" onchange="rAL()"><option value="all">All</option>${CLASSES.map(c=>`<option value="${c.id}">${c.name}</option>`).join("")}</select><button class="Sb D" onclick="if(confirm('Delete ALL attendance?')){att=[];svA();rAL();flash('Cleared');}">🗑</button></div></div><div id="attLL"></div>`;
+  const fc=document.getElementById("aLC").value;let f=att;if(fc!=="all")f=f.filter(a=>a.class===fc);
+  const c=document.getElementById("attLL");
+  if(!f.length){c.innerHTML='<div class="em">📅 No records</div>';return;}
+  c.innerHTML=f.map(a=>`<div class="LE"><button class="x" onclick="att=att.filter(x=>x.id!==${a.id});svA();rAL();">✕</button><div style="font-weight:700;font-size:.85rem;margin-bottom:3px">📅 ${fD(a.date)} <span class="cl" style="background:rgba(34,201,176,.1);color:var(--teal)">${CL[a.class]||a.class}</span></div><div style="font-size:.78rem;color:var(--dim)">✓ ${a.present}/${a.total}</div>${a.absent.length?`<div style="font-size:.78rem;color:var(--red);font-weight:600">✗ Absent (${a.absent.length}): ${a.absent.join(", ")}</div>`:`<div style="font-size:.78rem;color:var(--grn);font-weight:600">All present!</div>`}${a.late.length?`<div style="font-size:.78rem;color:var(--yel);font-weight:600">⏰ Late (${a.late.length}): ${a.late.join(", ")}</div>`:""}</div>`).join("");
 }
 
 // === STATS ===
 function rStats(){
   const c=document.getElementById("p-stats");
-  if(!inc.length){c.innerHTML='<div class="em">📊 No data yet</div>';return;}
+  if(!inc.length&&!att.length){c.innerHTML='<div class="em">📊 No data yet</div>';return;}
   const tot=inc.length,uni=new Set(inc.map(i=>i.student)).size;
-  const hi=inc.filter(i=>i.sev==="high").length,hw=inc.filter(i=>i.offence==="Homework not done").length;
-  const clsCnt={};inc.forEach(i=>{clsCnt[i.class]=(clsCnt[i.class]||0)+1;});
-  const topCls=Object.entries(clsCnt).sort((a,b)=>b[1]-a[1]);
+  const hi=inc.filter(i=>i.sev==="high").length,hw=inc.filter(i=>(i.offences||[]).includes("No homework")||i.offence==="No homework").length;
+  const tAbs=att.reduce((s,a)=>s+a.absent.length,0);
   const stuCnt={};inc.forEach(i=>{stuCnt[i.student]=(stuCnt[i.student]||0)+1;});
-  const topStu=Object.entries(stuCnt).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  const offCnt={};inc.forEach(i=>{offCnt[i.offence]=(offCnt[i.offence]||0)+1;});
-  const topOff=Object.entries(offCnt).sort((a,b)=>b[1]-a[1]);const mx=topOff[0]?.[1]||1;
+  const topStu=Object.entries(stuCnt).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const absM={};att.forEach(a=>a.absent.forEach(n=>{absM[n]=(absM[n]||0)+1;}));
+  const topAbs=Object.entries(absM).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  // All offences flattened
+  const offCnt={};inc.forEach(i=>{(i.offences||[i.offence]).forEach(o=>{offCnt[o]=(offCnt[o]||0)+1;});});
+  const topOff=Object.entries(offCnt).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  const mx=topOff[0]?.[1]||1;
 
   c.innerHTML=`
-    <div class="SG">${[[tot,"Incidents","var(--acc)"],[uni,"Students","var(--acc)"],[hi,"Serious","var(--red)"],[hw,"No H/W","var(--yel)"]].map(([v,l,cl])=>`<div class="SC"><div class="v" style="color:${cl}">${v}</div><div class="l">${l}</div></div>`).join("")}</div>
+    <div class="SG">${[[tot,"Incidents","var(--acc)"],[uni,"Students","var(--acc)"],[hi,"Serious","var(--red)"],[hw,"No H/W","var(--yel)"],[att.length,"Att.Days","var(--teal)"],[tAbs,"Absences","var(--red)"]].map(([v,l,cl])=>`<div class="SC"><div class="v" style="color:${cl}">${v}</div><div class="l">${l}</div></div>`).join("")}</div>
     ${topStu.length?`<div class="LB"><div class="tt">⚠️ Top Offenders</div>${topStu.map(([n,c],i)=>`<div class="LR"><span class="rk${i<3?" tp":""}">${i+1}</span><span class="ln">${esc(n)}</span><span class="lv" style="color:var(--acc)">${c}</span></div>`).join("")}</div>`:""}
-    ${topCls.length?`<div class="LB"><div class="tt">🏫 By Class</div>${topCls.map(([id,c])=>`<div class="LR"><span class="ln">${CL[id]||id}</span><span class="lv" style="color:var(--pur)">${c}</span></div>`).join("")}</div>`:""}
-    ${topOff.length?`<div class="LB"><div class="tt">📊 Offences</div>${topOff.map(([o,c])=>`<div class="OB"><span class="ol">${esc(o)}</span><div class="ow"><div class="ob" style="width:${(c/mx)*100}%"></div></div><span class="oc">${c}</span></div>`).join("")}</div>`:""}`;
+    ${topAbs.length?`<div class="LB"><div class="tt">📅 Most Absent</div>${topAbs.map(([n,c],i)=>`<div class="LR"><span class="rk${i<3?" tp":""}">${i+1}</span><span class="ln">${esc(n)}</span><span class="lv" style="color:var(--red)">${c}d</span></div>`).join("")}</div>`:""}
+    ${topOff.length?`<div class="LB"><div class="tt">📊 Top Offences</div>${topOff.map(([o,c])=>`<div class="LR"><span class="ln">${esc(o)}</span><span class="lv" style="color:var(--acc)">${c}</span></div>`).join("")}</div>`:""}`;
 }
 
 // === SHARE ===
 function rShare(){
   const el=document.getElementById("p-share");
   el.innerHTML=`<div class="C"><h2>📤 Share & Print</h2>
-    <div style="font-weight:700;font-size:.82rem;margin-bottom:6px;color:var(--teal)">📅 Today's Report</div>
+    <div style="font-weight:700;font-size:.82rem;margin-bottom:6px;color:var(--teal)">📅 Today</div>
     <div class="shg"><button class="shb" onclick="shareE(false)">📧 Email</button><button class="shb wa" onclick="shareW(false)">💬 WhatsApp</button></div>
-    <button class="shb" onclick="doPrint(false)" style="margin-bottom:14px">🖨️ Print Today</button>
+    <button class="shb" onclick="doPrint(false)" style="margin-bottom:12px">🖨️ Print Today</button>
     <div style="font-weight:700;font-size:.82rem;margin-bottom:6px;color:var(--acc)">📋 Full Report</div>
     <div class="shg"><button class="shb" onclick="shareE(true)">📧 Email All</button><button class="shb wa" onclick="shareW(true)">💬 WhatsApp All</button></div>
-    <button class="shb" onclick="doPrint(true)" style="margin-bottom:14px">🖨️ Print Full</button>
-    <div style="font-weight:700;font-size:.82rem;margin-bottom:6px;color:var(--pur)">⬇ Export</div>
-    <button class="shb" onclick="expCSV()">⬇ Download CSV</button></div>
-    <div class="C"><div style="font-size:.78rem;color:var(--dim);line-height:1.7">Incidents: <b style="color:var(--tx)">${inc.length}</b> · Students: <b style="color:var(--tx)">${new Set(inc.map(i=>i.student)).size}</b> · Serious: <b style="color:var(--red)">${inc.filter(i=>i.sev==="high").length}</b></div>
-    <div style="margin-top:8px;padding:7px 10px;background:rgba(45,212,168,.06);border:1px solid rgba(45,212,168,.15);border-radius:7px;font-size:.72rem;color:var(--grn)">✓ Works offline. Data stored on device.</div></div>`;
+    <button class="shb" onclick="doPrint(true)" style="margin-bottom:12px">🖨️ Print Full</button>
+    <div style="font-weight:700;font-size:.82rem;margin-bottom:6px;color:var(--pur)">⬇ Export & Import</div>
+    <button class="shb" onclick="expCSV()">⬇ Download CSV</button>
+    <label class="shb" style="margin-top:6px;cursor:pointer">📥 Import CSV<input type="file" accept=".csv" onchange="importCSV(this)" style="display:none"></label>
+    <div id="impSt" style="margin-top:4px;font-size:.72rem;color:var(--dim)"></div>
+  </div>`;
 }
 
-function buildText(full){
-  const d=td();let t="";
-  if(full){
-    t="FULL BEHAVIOUR REPORT\nHilal International Academy\nGenerated: "+fDL(d)+"\n\n=== INCIDENTS ("+inc.length+") ===\n";
-    inc.forEach(i=>{t+=fD(i.date)+" "+i.time+" | "+i.student+" ("+CL[i.class]+") | "+i.offence+" | "+i.location+(i.note?" | "+i.note:"")+"\n";});
-  } else {
-    t="DAILY BEHAVIOUR REPORT\nHilal International Academy\n"+fDL(d)+"\n\n";
-    const tI=inc.filter(i=>i.date===d);
-    if(tI.length){
-      t+="🚨 INCIDENTS ("+tI.length+")\n";
-      tI.forEach((i,n)=>{t+=(n+1)+". "+i.student+" ("+CL[i.class]+") — "+i.offence+" ["+i.location+", "+i.time+"]"+(i.sev==="high"?" ⚠️SERIOUS":"")+(i.note?" | "+i.note:"")+"\n";});
-      const lo=tI.filter(i=>i.sev==="low").length,md=tI.filter(i=>i.sev==="medium").length,hi=tI.filter(i=>i.sev==="high").length;
-      t+="\nSummary: "+lo+" minor, "+md+" moderate, "+hi+" serious\n";
-    } else t+="🚨 No incidents today ✓\n";
-  }
-  return t;
-}
+function buildText(full){const d=td();let t="";if(full){t="FULL REPORT\nHilal International Academy\n"+fDL(d)+"\n\n=== INCIDENTS ("+inc.length+") ===\n";inc.forEach(i=>{t+=fD(i.date)+" "+i.time+" | "+i.student+" ("+CL[i.class]+") | "+i.offence+(i.involved?" ↔ "+i.involved:"")+(i.note?" | "+i.note:"")+"\n";});t+="\n=== ATTENDANCE ("+att.length+") ===\n";att.forEach(a=>{t+=fD(a.date)+" "+CL[a.class]+": "+a.present+"/"+a.total;if(a.absent.length)t+=" | Absent: "+a.absent.join(", ");if(a.late.length)t+=" | Late: "+a.late.join(", ");t+="\n";});}else{t="DAILY REPORT — "+fDL(d)+"\nHilal International Academy\n\n";const tA=att.filter(a=>a.date===d),tI=inc.filter(i=>i.date===d);if(tA.length){t+="📋 ATTENDANCE\n";tA.forEach(a=>{t+=CL[a.class]+": "+a.present+"/"+a.total;if(a.absent.length)t+=" | Absent: "+a.absent.join(", ");if(a.late.length)t+=" | Late: "+a.late.join(", ");t+="\n";});}else t+="📋 ATTENDANCE: Not taken\n";t+="\n";if(tI.length){t+="🚨 INCIDENTS ("+tI.length+")\n";tI.forEach((i,n)=>{t+=(n+1)+". "+i.student+" ("+CL[i.class]+") — "+i.offence+(i.involved?" ↔ "+i.involved:"")+(i.sev==="high"?" ⚠️":"")+(i.note?" | "+i.note:"")+"\n";});}else t+="🚨 INCIDENTS: None ✓\n";}return t;}
 
-function shareE(full){window.open("mailto:?subject="+encodeURIComponent(full?"Full Report — HIA":"Daily Report — HIA — "+fD(td()))+"&body="+encodeURIComponent(buildText(full)),"_blank");}
-function shareW(full){window.open("https://wa.me/?text="+encodeURIComponent(buildText(full)),"_blank");}
+function shareE(f){window.open("mailto:?subject="+encodeURIComponent(f?"Full Report — HIA":"Daily Report — HIA — "+fD(td()))+"&body="+encodeURIComponent(buildText(f)),"_blank");}
+function shareW(f){window.open("https://wa.me/?text="+encodeURIComponent(buildText(f)),"_blank");}
+function doPrint(f){document.getElementById("printArea").innerHTML="<h1>Hilal International Academy</h1><h3>"+(f?"Full":"Daily")+" Report — "+fDL(td())+"</h3><pre style='white-space:pre-wrap;font-size:11px'>"+esc(buildText(f))+"</pre><div class='pr-ft'>Generated "+new Date().toLocaleString("en-GB")+"</div>";setTimeout(()=>window.print(),200);}
 
-function buildPrintHTML(full){
-  const d=td();let h="<h1>Hilal International Academy</h1>";
-  if(full){
-    h+="<h3>Full Behaviour Report — "+fDL(d)+"</h3><h2>All Incidents ("+inc.length+")</h2>";
-    if(inc.length){h+="<table><tr><th>#</th><th>Date</th><th>Time</th><th>Student</th><th>Class</th><th>Offence</th><th>Severity</th><th>Location</th><th>Note</th></tr>";inc.forEach((i,n)=>{h+="<tr><td>"+(n+1)+"</td><td>"+fD(i.date)+"</td><td>"+i.time+"</td><td>"+esc(i.student)+"</td><td>"+(CL[i.class]||i.class)+"</td><td>"+esc(i.offence)+"</td><td class=\""+(i.sev==="high"?"pr-red":i.sev==="medium"?"pr-yel":"")+"\">"+i.sev+"</td><td>"+esc(i.location)+"</td><td>"+esc(i.note||"")+"</td></tr>";});h+="</table>";}
-  } else {
-    h+="<h3>Daily Behaviour Report — "+fDL(d)+"</h3>";
-    const tI=inc.filter(i=>i.date===d);
-    h+="<h2>Incidents"+(tI.length?" ("+tI.length+")":"")+"</h2>";
-    if(tI.length){h+="<table><tr><th>#</th><th>Time</th><th>Student</th><th>Class</th><th>Offence</th><th>Severity</th><th>Location</th><th>Note</th></tr>";tI.forEach((i,n)=>{h+="<tr><td>"+(n+1)+"</td><td>"+i.time+"</td><td>"+esc(i.student)+"</td><td>"+(CL[i.class]||i.class)+"</td><td>"+esc(i.offence)+"</td><td class=\""+(i.sev==="high"?"pr-red":i.sev==="medium"?"pr-yel":"")+"\">"+i.sev+"</td><td>"+esc(i.location)+"</td><td>"+esc(i.note||"")+"</td></tr>";});h+="</table>";
-    const lo=tI.filter(i=>i.sev==="low").length,md=tI.filter(i=>i.sev==="medium").length,hh=tI.filter(i=>i.sev==="high").length;
-    h+="<p><b>Summary:</b> "+lo+" minor, "+md+" moderate"+(hh?", <span class='pr-red'>"+hh+" serious</span>":"")+"</p>";
-    } else h+="<p>No incidents today ✓</p>";
-  }
-  h+="<div class='pr-ft'>Generated by HIA Behaviour Tracker · "+new Date().toLocaleString("en-GB")+"</div>";
-  return h;
-}
+function expCSV(){if(!inc.length){flash("No data");return;}const h="Date,Time,Class,Student,Offences,Severity,Involved,Location,Note,Mode\n";const r=inc.map(i=>`${i.date},${i.time},${CL[i.class]||i.class},"${(i.student||"").replace(/"/g,'""')}","${(i.offence||"").replace(/"/g,'""')}",${i.sev},"${(i.involved||"").replace(/"/g,'""')}","${(i.location||"").replace(/"/g,'""')}","${(i.note||"").replace(/"/g,'""')}",${i.mode||""}`).join("\n");const b=new Blob([h+r],{type:"text/csv"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download="hia_"+td()+".csv";a.click();URL.revokeObjectURL(u);flash("CSV exported!");}
 
-function doPrint(full){document.getElementById("printArea").innerHTML=buildPrintHTML(full);setTimeout(()=>window.print(),200);}
-
-function expCSV(){
-  if(!inc.length){flash("No data");return;}
-  const h="Date,Time,Class,Student,Offence,Severity,Location,Note\n";
-  const r=inc.map(i=>`${i.date},${i.time},${CL[i.class]||i.class},"${(i.student||"").replace(/"/g,'""')}",${i.offence},${i.sev},"${(i.location||"").replace(/"/g,'""')}","${(i.note||"").replace(/"/g,'""')}"`).join("\n");
-  const b=new Blob([h+r],{type:"text/csv"});const u=URL.createObjectURL(b);
-  const a=document.createElement("a");a.href=u;a.download="hia_behaviour_"+td()+".csv";a.click();URL.revokeObjectURL(u);flash("CSV exported!");
-}
+function importCSV(input){const file=input.files[0];if(!file)return;const st=document.getElementById("impSt");st.textContent="Reading...";const reader=new FileReader();reader.onload=function(e){try{const lines=e.target.result.split("\n").filter(l=>l.trim());if(lines.length<2){st.textContent="Empty file";return;}let imported=0;const nameToId={};CLASSES.forEach(c=>{nameToId[c.name.toLowerCase()]=c.id;});nameToId["level 1"]="level1";nameToId["level 2"]="level2";for(let i=1;i<lines.length;i++){const row=[];let cur="",inQ=false;for(let j=0;j<lines[i].length;j++){const ch=lines[i][j];if(ch==='"')inQ=!inQ;else if(ch===','&&!inQ){row.push(cur.trim());cur="";}else cur+=ch;}row.push(cur.trim());if(row.length<5)continue;const date=row[0],time=row[1],clsRaw=row[2],student=row[3],offence=row[4],severity=row[5]||sev(offence),involved=row[6]||"",location=row[7]||"In class",note=row[8]||"";if(!student||!offence)continue;let clsId=nameToId[clsRaw.toLowerCase()]||clsRaw;const dup=inc.some(x=>x.student===student&&x.date===date&&x.time===time&&x.offence===offence);if(dup)continue;inc.push({id:Date.now()+i,class:clsId,student,offence,offences:[offence],sev:severity,involved,location,note,date,time,mode:"teacher"});imported++;}svI();st.innerHTML=`<span style="color:var(--grn)">✓ Imported ${imported}</span>`;flash("✓ Imported "+imported);}catch(err){st.textContent="Error: "+err.message;}};reader.readAsText(file);}
 
 function flash(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2500);}
 
+// === INSTALL PROMPT ===
+let deferredPrompt=null;
+const isInstalled=window.matchMedia('(display-mode:standalone)').matches||window.navigator.standalone;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;if(!isInstalled)showInstall();});
+function showInstall(){const b=document.createElement('div');b.id='ib';b.innerHTML=`<div style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:20px"><div style="background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:28px 22px;max-width:340px;width:100%;text-align:center"><img src="icon-192.png" style="width:64px;height:64px;border-radius:14px;margin-bottom:12px"><div style="font-size:1.1rem;font-weight:800;margin-bottom:4px">Install DIAS Tracker</div><div style="color:var(--dim);font-size:.82rem;margin-bottom:16px">Add to home screen for quick access.</div><button onclick="doInstall()" style="width:100%;padding:12px;border:none;border-radius:10px;background:var(--acc);color:#fff;font-size:.92rem;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:6px">Install App</button><button onclick="document.getElementById('ib').remove()" style="width:100%;padding:8px;border:none;background:0;color:var(--dim);font-size:.8rem;cursor:pointer;font-family:inherit">Not now</button></div></div>`;document.body.appendChild(b);}
+function doInstall(){document.getElementById('ib')?.remove();if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null;});}}
+window.addEventListener('load',()=>{setTimeout(()=>{if(!isInstalled&&!deferredPrompt){const isIOS=/iPhone|iPad/.test(navigator.userAgent);const b=document.createElement('div');b.id='ib';const ins=isIOS?'Tap <b>Share</b> (□↑) then <b>"Add to Home Screen"</b>':'Tap <b>⋮</b> menu then <b>"Install app"</b>';b.innerHTML=`<div style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:20px"><div style="background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:28px 22px;max-width:340px;width:100%;text-align:center"><img src="icon-192.png" style="width:64px;height:64px;border-radius:14px;margin-bottom:12px"><div style="font-size:1.1rem;font-weight:800;margin-bottom:4px">Install DIAS Tracker</div><div style="color:var(--tx);font-size:.84rem;margin-bottom:16px;padding:10px;background:var(--sf2);border-radius:8px;text-align:left">${ins}</div><button onclick="document.getElementById('ib').remove()" style="width:100%;padding:10px;border:none;border-radius:10px;background:var(--acc);color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit">Got it</button></div></div>`;document.body.appendChild(b);}},1500);});
+
+// === INIT ===
 renderTabs();renderRecord();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
 </script>
