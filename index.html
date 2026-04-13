@@ -45,6 +45,7 @@ textarea{resize:vertical;min-height:40px}
 .chip.on{border-color:var(--acc);background:rgba(59,130,246,.12);color:var(--acc)}
 .chip.on-y{border-color:var(--yel);background:rgba(240,180,41,.12);color:var(--yel)}
 .chip.on-r{border-color:var(--red);background:rgba(239,68,68,.12);color:var(--red)}
+.chip.on-g{border-color:var(--grn);background:rgba(45,212,168,.12);color:var(--grn)}
 .cg-title{font-size:.6rem;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin:8px 0 4px}
 /* Toggle */
 .toggle{display:flex;gap:2px;background:var(--sf2);border-radius:8px;padding:2px;margin-bottom:10px;border:1px solid var(--bd)}
@@ -123,6 +124,7 @@ textarea{resize:vertical;min-height:40px}
 <div id="p-log" class="P"></div>
 <div id="p-attlog" class="P"></div>
 <div id="p-students" class="P"></div>
+<div id="p-merits" class="P"></div>
 <div id="p-stats" class="P"></div>
 <div id="p-share" class="P"></div>
 </div>
@@ -169,6 +171,7 @@ const LOCATIONS=[
 const TABS=[
   {id:"record",icon:"✏️",label:"Record"},
   {id:"attend",icon:"📋",label:"Attend."},
+  {id:"merits",icon:"⭐",label:"Merits"},
   {id:"log",icon:"📄",label:"Log"},
   {id:"attlog",icon:"📅",label:"Att.Log"},
   {id:"students",icon:"👥",label:"Students"},
@@ -185,10 +188,13 @@ const esc=s=>{const d=document.createElement("div");d.textContent=s||"";return d
 // === STATE ===
 let inc=JSON.parse(localStorage.getItem("hia_inc")||"[]");
 let att=JSON.parse(localStorage.getItem("hia_att")||"[]");
+let mrt=JSON.parse(localStorage.getItem("hia_merits")||"[]");
 let curTab="record";
 let mode="monitor"; // monitor or teacher
 let selOffences=[];
 let aState={};
+function svM(){localStorage.setItem("hia_merits",JSON.stringify(mrt));}
+const MERIT_CATS=["Helpful","Kind","Improved","Excellent Work","Good Manners","Leadership","Teamwork","Quran Memorisation","Sports","Competition Winner","Perfect Attendance","Other"];
 
 // Seed default students
 (function seedStudents(){
@@ -228,6 +234,7 @@ function go(tab){
   renderTabs();
   if(tab==="record") renderRecord();
   if(tab==="attend") renderAttend();
+  if(tab==="merits") renderMerits();
   if(tab==="log") rLog();
   if(tab==="attlog") rAL();
   if(tab==="students") renderStudents();
@@ -429,9 +436,71 @@ function rAL(){
 }
 
 // === STATS ===
+// === MERITS ===
+let selMeritCat="";
+let selMeritPts=1;
+function renderMerits(){
+  selMeritCat="";selMeritPts=1;
+  const el=document.getElementById("p-merits");
+  const today=td();
+  const todayM=mrt.filter(m=>m.date===today);
+  const lb={};mrt.forEach(m=>{lb[m.student]=(lb[m.student]||0)+m.points;});
+  const topM=Object.entries(lb).sort((a,b)=>b[1]-a[1]).slice(0,10);
+
+  el.innerHTML=`<div class="C"><h2>⭐ Award Merit</h2>
+    <div class="L">Section</div>
+    <div class="toggle" id="mSec">${[...new Set(CLASSES.map(c=>c.sec))].map((s,i)=>`<button class="tg${i===0?" on":""}" onclick="mSetSec('${s}')">${s}</button>`).join("")}</div>
+    <div class="L">Class</div>
+    <select id="mCls" onchange="mLoadStu()" style="margin-bottom:8px">${CLASSES.filter(c=>c.sec===CLASSES[0]?.sec).map(c=>`<option value="${c.id}">${c.name}</option>`).join("")}</select>
+    <div class="L">Student</div>
+    <select id="mStu" style="margin-bottom:8px"><option value="">Select class first...</option></select>
+    <div class="L">Category</div>
+    <div class="chips" id="mCatChips">${MERIT_CATS.map(c=>`<button class="chip" onclick="mPickCat(this,'${c}')">${c}</button>`).join("")}</div>
+    <div class="L">Points</div>
+    <div style="display:flex;gap:5px;margin:4px 0 10px">${[1,2,3,4,5].map(p=>`<button class="chip${p===1?" on-g":""}" id="mp${p}" onclick="mPickPts(${p})" style="flex:1;text-align:center">${"⭐".repeat(p)}</button>`).join("")}</div>
+    <div class="L">Note (optional)</div>
+    <input type="text" id="mNote" placeholder="e.g. Helped a classmate" style="margin-bottom:8px">
+    <button class="B" style="background:linear-gradient(135deg,var(--grn),#1aab8a)" onclick="awardMerit()">⭐ Award Merit</button>
+  </div>
+  ${todayM.length?`<div class="C"><h2>Today's Merits (${todayM.length})</h2>${todayM.map(m=>`<div style="display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--bd)"><span style="color:var(--yel)">⭐</span><div style="flex:1"><div style="font-size:.85rem;font-weight:500">${esc(m.student)}</div><div style="font-size:.72rem;color:var(--dim)">${m.category} · ${m.points}pt${m.note?" · "+esc(m.note):""}</div></div></div>`).join("")}</div>`:""}
+  ${topM.length?`<div class="C"><h2>🏆 Merit Leaderboard</h2>${topM.map(([n,p],i)=>`<div style="display:flex;align-items:center;padding:6px 0;border-bottom:1px solid var(--bd)"><span style="width:24px;font-weight:700;color:${i<3?"var(--yel)":"var(--dim)"}">${i+1}</span><span style="flex:1;font-size:.85rem">${esc(n)}</span><span style="color:var(--yel);font-weight:600">${p} ⭐</span></div>`).join("")}</div>`:""}`;
+  mLoadStu();
+}
+function mSetSec(s){
+  document.querySelectorAll("#mSec .tg").forEach(b=>{b.classList.toggle("on",b.textContent===s);});
+  document.getElementById("mCls").innerHTML=CLASSES.filter(c=>c.sec===s).map(c=>`<option value="${c.id}">${c.name}</option>`).join("");
+  mLoadStu();
+}
+function mLoadStu(){
+  const cls=document.getElementById("mCls").value;
+  const names=getStu(cls);
+  document.getElementById("mStu").innerHTML=names.length?`<option value="">Select student...</option>`+names.map(n=>`<option value="${n}">${n}</option>`).join(""):`<option value="">No students</option>`;
+}
+function mPickCat(btn,cat){
+  document.querySelectorAll("#mCatChips .chip").forEach(c=>{c.classList.remove("on-g");});
+  btn.classList.add("on-g");selMeritCat=cat;
+}
+function mPickPts(p){
+  [1,2,3,4,5].forEach(x=>{document.getElementById("mp"+x).classList.toggle("on-g",x===p);});
+  selMeritPts=p;
+}
+function awardMerit(){
+  const stu=document.getElementById("mStu").value;
+  const cls=document.getElementById("mCls").value;
+  if(!stu){flash("Select a student");return;}
+  if(!selMeritCat){flash("Select a category");return;}
+  mrt.push({id:Date.now(),class:cls,student:stu,category:selMeritCat,points:selMeritPts,note:document.getElementById("mNote").value.trim(),date:td(),time:nt()});
+  svM();
+  flash(`⭐ ${selMeritPts} point${selMeritPts>1?"s":""} to ${stu}!`,sndMerit);
+  renderMerits();
+}
+
 function rStats(){
   const c=document.getElementById("p-stats");
-  if(!inc.length&&!att.length){c.innerHTML='<div class="em">📊 No data yet</div>';return;}
+  if(!inc.length&&!att.length&&!mrt.length){c.innerHTML='<div class="em">📊 No data yet</div>';return;}
+  const totM=mrt.length,totMP=mrt.reduce((s,m)=>s+m.points,0);
+  const mLb={};mrt.forEach(m=>{mLb[m.student]=(mLb[m.student]||0)+m.points;});
+  const topMerit=Object.entries(mLb).sort((a,b)=>b[1]-a[1]).slice(0,10);
   const tot=inc.length,uni=new Set(inc.map(i=>i.student)).size;
   const hi=inc.filter(i=>i.sev==="high").length,hw=inc.filter(i=>(i.offences||[]).includes("No homework")||i.offence==="No homework").length;
   const tAbs=att.reduce((s,a)=>s+a.absent.length,0);
@@ -445,7 +514,8 @@ function rStats(){
   const mx=topOff[0]?.[1]||1;
 
   c.innerHTML=`
-    <div class="SG">${[[tot,"Incidents","var(--acc)"],[uni,"Students","var(--acc)"],[hi,"Serious","var(--red)"],[hw,"No H/W","var(--yel)"],[att.length,"Att.Days","var(--teal)"],[tAbs,"Absences","var(--red)"]].map(([v,l,cl])=>`<div class="SC"><div class="v" style="color:${cl}">${v}</div><div class="l">${l}</div></div>`).join("")}</div>
+    <div class="SG">${[[tot,"Incidents","var(--acc)"],[uni,"Students","var(--acc)"],[hi,"Serious","var(--red)"],[hw,"No H/W","var(--yel)"],[att.length,"Att.Days","var(--teal)"],[tAbs,"Absences","var(--red)"],[totM,"Merits","var(--grn)"],[totMP,"Merit Pts","var(--yel)"]].map(([v,l,cl])=>`<div class="SC"><div class="v" style="color:${cl}">${v}</div><div class="l">${l}</div></div>`).join("")}</div>
+    ${topMerit.length?`<div class="LB"><div class="tt">⭐ Merit Leaderboard</div>${topMerit.map(([n,p],i)=>`<div class="LR"><span class="rk${i<3?" tp":""}">${i+1}</span><span class="ln">${esc(n)}</span><span class="lv" style="color:var(--yel)">${p}⭐</span></div>`).join("")}</div>`:""}
     ${topStu.length?`<div class="LB"><div class="tt">⚠️ Top Offenders</div>${topStu.map(([n,c],i)=>`<div class="LR"><span class="rk${i<3?" tp":""}">${i+1}</span><span class="ln">${esc(n)}</span><span class="lv" style="color:var(--acc)">${c}</span></div>`).join("")}</div>`:""}
     ${topAbs.length?`<div class="LB"><div class="tt">📅 Most Absent</div>${topAbs.map(([n,c],i)=>`<div class="LR"><span class="rk${i<3?" tp":""}">${i+1}</span><span class="ln">${esc(n)}</span><span class="lv" style="color:var(--red)">${c}d</span></div>`).join("")}</div>`:""}
     ${topOff.length?`<div class="LB"><div class="tt">📊 Top Offences</div>${topOff.map(([o,c])=>`<div class="LR"><span class="ln">${esc(o)}</span><span class="lv" style="color:var(--acc)">${c}</span></div>`).join("")}</div>`:""}`;
@@ -468,7 +538,7 @@ function rShare(){
   </div>`;
 }
 
-function buildText(full){const d=td();let t="";if(full){t="FULL REPORT\nHilal International Academy\n"+fDL(d)+"\n\n=== INCIDENTS ("+inc.length+") ===\n";inc.forEach(i=>{t+=fD(i.date)+" "+i.time+" | "+i.student+" ("+CL[i.class]+") | "+i.offence+(i.involved?" ↔ "+i.involved:"")+(i.note?" | "+i.note:"")+"\n";});t+="\n=== ATTENDANCE ("+att.length+") ===\n";att.forEach(a=>{t+=fD(a.date)+" "+CL[a.class]+": "+a.present+"/"+a.total;if(a.absent.length)t+=" | Absent: "+a.absent.join(", ");if(a.late.length)t+=" | Late: "+a.late.join(", ");t+="\n";});}else{t="DAILY REPORT — "+fDL(d)+"\nHilal International Academy\n\n";const tA=att.filter(a=>a.date===d),tI=inc.filter(i=>i.date===d);if(tA.length){t+="📋 ATTENDANCE\n";tA.forEach(a=>{t+=CL[a.class]+": "+a.present+"/"+a.total;if(a.absent.length)t+=" | Absent: "+a.absent.join(", ");if(a.late.length)t+=" | Late: "+a.late.join(", ");t+="\n";});}else t+="📋 ATTENDANCE: Not taken\n";t+="\n";if(tI.length){t+="🚨 INCIDENTS ("+tI.length+")\n";tI.forEach((i,n)=>{t+=(n+1)+". "+i.student+" ("+CL[i.class]+") — "+i.offence+(i.involved?" ↔ "+i.involved:"")+(i.sev==="high"?" ⚠️":"")+(i.note?" | "+i.note:"")+"\n";});}else t+="🚨 INCIDENTS: None ✓\n";}return t;}
+function buildText(full){const d=td();let t="";if(full){t="FULL REPORT\nHilal International Academy\n"+fDL(d)+"\n\n=== INCIDENTS ("+inc.length+") ===\n";inc.forEach(i=>{t+=fD(i.date)+" "+i.time+" | "+i.student+" ("+CL[i.class]+") | "+i.offence+(i.involved?" ↔ "+i.involved:"")+(i.note?" | "+i.note:"")+"\n";});t+="\n=== ATTENDANCE ("+att.length+") ===\n";att.forEach(a=>{t+=fD(a.date)+" "+CL[a.class]+": "+a.present+"/"+a.total;if(a.absent.length)t+=" | Absent: "+a.absent.join(", ");if(a.late.length)t+=" | Late: "+a.late.join(", ");t+="\n";});t+="\n=== MERITS ("+mrt.length+") ===\n";mrt.forEach(m=>{t+=fD(m.date)+" "+m.time+" | "+m.student+" ("+CL[m.class]+") | "+m.category+" ("+m.points+"pt)"+(m.note?" | "+m.note:"")+"\n";});}else{t="DAILY REPORT — "+fDL(d)+"\nHilal International Academy\n\n";const tA=att.filter(a=>a.date===d),tI=inc.filter(i=>i.date===d),tM=mrt.filter(m=>m.date===d);if(tA.length){t+="📋 ATTENDANCE\n";tA.forEach(a=>{t+=CL[a.class]+": "+a.present+"/"+a.total;if(a.absent.length)t+=" | Absent: "+a.absent.join(", ");if(a.late.length)t+=" | Late: "+a.late.join(", ");t+="\n";});}else t+="📋 ATTENDANCE: Not taken\n";t+="\n";if(tI.length){t+="🚨 INCIDENTS ("+tI.length+")\n";tI.forEach((i,n)=>{t+=(n+1)+". "+i.student+" ("+CL[i.class]+") — "+i.offence+(i.involved?" ↔ "+i.involved:"")+(i.sev==="high"?" ⚠️":"")+(i.note?" | "+i.note:"")+"\n";});}else t+="🚨 INCIDENTS: None ✓\n";t+="\n";if(tM.length){t+="⭐ MERITS ("+tM.length+")\n";tM.forEach((m,n)=>{t+=(n+1)+". "+m.student+" ("+CL[m.class]+") — "+m.category+" ("+m.points+"pt)"+(m.note?" | "+m.note:"")+"\n";});}else t+="⭐ MERITS: None\n";}return t;}
 
 function shareE(f){window.open("mailto:?subject="+encodeURIComponent(f?"Full Report — HIA":"Daily Report — HIA — "+fD(td()))+"&body="+encodeURIComponent(buildText(f)),"_blank");}
 function shareW(f){window.open("https://wa.me/?text="+encodeURIComponent(buildText(f)),"_blank");}
